@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>FubuMVC.Bender</id>
+      <version>0.0.0.0</version>
+      <title>FubuMVC Bender Integration</title>
+      <authors>Mike O'Brien</authors>
+      <description>Integrates Bender with FubuMVC.</description>
+      <releaseNotes />
+      <copyright />
+      <language>en-US</language>
+      <licenseUrl>https://github.com/mikeobrien/FubuMVC.Bender/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/mikeobrien/FubuMVC.Bender</projectUrl>
+      <owners>Mike O'Brien</owners>
+      <summary>Integrates Bender with FubuMVC.</summary>
+      <iconUrl>https://github.com/mikeobrien/FubuMVC.Bender/raw/master/misc/logo.png</iconUrl>
+      <tags>fubumvc serializer</tags>
+      <dependencies>
+         <dependency id="FubuMVC.Core" version="1.3.0" />
+         <dependency id="Bender" version="3.0.0" />
+      </dependencies>
+   </metadata>
+</package>
