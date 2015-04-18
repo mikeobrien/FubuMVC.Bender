@@ -43,7 +43,7 @@ gulp.task('test', ['build'], function () {
 
 gulp.task('nuget-package', ['test'], function() {
 
-    gulp.src('src/Bender/bin/Release/FubuMVC.Bender.*')
+    gulp.src('src/FubuMVC.Bender/bin/Release/FubuMVC.Bender.*')
         .pipe(gulp.dest('package/lib'));
 
     return Nuget()
