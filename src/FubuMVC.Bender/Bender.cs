@@ -10,7 +10,7 @@ using FubuMVC.Core.Registration.Routes;
 
 namespace FubuMVC.Bender
 {
-    public class FubuMVCBender
+    public class Bender
     {
 
     }
