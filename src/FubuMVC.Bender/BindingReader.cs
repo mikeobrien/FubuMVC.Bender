@@ -19,7 +19,14 @@ namespace FubuMVC.Bender
         public List<RequestDataSource> BindingSources { get; private set; }
     }
 
-    public class BindingReader<T, TFormatter> : IReader<T>, DescribesItself where TFormatter : IFormatter
+    public class BindingReader
+    {
+        public const string DescriptionFormat = "Reading with {0}.";
+        public const string DescriptionChildKey = "Formatter";
+    }
+
+    public class BindingReader<T, TFormatter> : BindingReader, 
+        IReader<T>, DescribesItself where TFormatter : IFormatter
     {
         private readonly TFormatter _formatter;
         private readonly BindingReaderOptions _options;
@@ -44,8 +51,10 @@ namespace FubuMVC.Bender
         {
             var model = _formatter.Read<T>();
             var requestData = !_options.BindingSources.Any() ? _requestData :
-                new RequestData(_options.BindingSources.Distinct().Select(x => _requestData.ValuesFor(x)));
-            _objectResolver.BindProperties(typeof(T), model, new BindingContext(requestData, _serviceLocator, new NulloBindingLogger()));
+                new RequestData(_options.BindingSources.Distinct()
+                    .Select(x => _requestData.ValuesFor(x)));
+            _objectResolver.BindProperties(typeof(T), model, 
+                new BindingContext(requestData, _serviceLocator, new NulloBindingLogger()));
             return model;
         }
 
@@ -57,7 +66,7 @@ namespace FubuMVC.Bender
         public void Describe(Description description)
         {
             var formatter = Description.For(_formatter);
-            description.Title = "Reading with " + formatter.Title;
+            description.Title = DescriptionFormat.ToFormat(formatter.Title);
             description.Children["Formatter"] = formatter;
         }
     }

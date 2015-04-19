@@ -26,8 +26,8 @@ namespace FubuMVC.Bender
             MatchingMimetypes = mimeTypes;
         }
 
-        public abstract void Serialize(object target, Stream stream);
-        public abstract object Deserialize(Type type, Stream stream);
+        protected abstract void Serialize(object target, Stream stream);
+        protected abstract object Deserialize(Type type, Stream stream);
 
         public void Write(object target, string mimeType)
         {

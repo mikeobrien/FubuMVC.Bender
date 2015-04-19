@@ -27,12 +27,12 @@ namespace FubuMVC.Bender
             _deserializer = deserializer;
         }
 
-        public override void Serialize(object target, Stream stream)
+        protected override void Serialize(object target, Stream stream)
         {
             _serializer.SerializeJsonStream(target, stream);
         }
 
-        public override object Deserialize(Type type, Stream stream)
+        protected override object Deserialize(Type type, Stream stream)
         {
             var json = new StreamReader(stream).ReadToEnd();
             try
