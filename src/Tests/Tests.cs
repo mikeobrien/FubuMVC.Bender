@@ -1,32 +1,45 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
+using System.Net;
 using NUnit.Framework;
 using Should;
 
 namespace Tests
 {
-        [TestFixture]
-        public class Tests
+    [TestFixture]
+    public class Tests
+    {
+        private Website _website;
+
+        [TestFixtureSetUp]
+        public void Setup()
         {
-            private Website _website;
+            _website = Website.Create(@"..\..\..\TestHarness");
+            _website.Start();
+        }
 
-            [TestFixtureSetUp]
-            public void Setup()
+        [TestFixtureTearDown]
+        public void TearDown()
+        {
+            _website.Stop();
+        }
+
+        [Test]
+        public void should_serialize_with_bender()
+        {
+            var client = new WebClient();
+            client.Headers.Add("content-type", "application/json");
+            client.Headers.Add("accept", "application/json");
+            try
             {
-                _website = Website.Create(@"..\..\..\TestHarness");
-                _website.Start();
+                client.UploadString(_website.Url,
+                    "{\"value\":\"hai\"}").ShouldEqual("{\"value\":\"hai\"}");
             }
-
-            [TestFixtureTearDown]
-            public void TearDown()
+            catch (WebException exception)
             {
-                _website.Stop();
-            }
-
-            [Test]
-            public void should_serialize_with_bender()
-            {
-                new WebClient().UploadString(_website.Url, 
-                    "{\"value\":\"hai\"}").ShouldEqual("{\"Value\":null}");
+                Console.WriteLine(new StreamReader(exception.Response.GetResponseStream()).ReadToEnd());
+                throw;
             }
         }
+    }
 }

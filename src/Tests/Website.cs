@@ -70,7 +70,11 @@ namespace Tests
             var startTime = DateTime.Now;
             do
             {
-                _iisHandle = _iis.GetRunningProcessForSite(_name, "", _appPool, "");
+                try
+                {
+                    _iisHandle = _iis.GetRunningProcessForSite(_name, "", _appPool, "");
+                }
+                catch { }
                 if (_iisHandle != 0) break;
                 if ((DateTime.Now - startTime).Seconds >= 10)
                     throw new TimeoutException("Timeout starting IIS express.");

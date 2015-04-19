@@ -38,8 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bender">
+      <HintPath>..\packages\Bender.3.0.4.0\lib\Bender.dll</HintPath>
+    </Reference>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.2.0.0.576\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="Flexo">
+      <HintPath>..\packages\flexo.1.0.20.0\lib\Flexo.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore.1.2.0.272\lib\FubuCore.dll</HintPath>
@@ -104,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="Conventions.cs" />
     <Compile Include="PostHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

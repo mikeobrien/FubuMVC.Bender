@@ -33,9 +33,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bender">
+      <HintPath>..\packages\Bender.3.0.4.0\lib\Bender.dll</HintPath>
+    </Reference>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.2.1.0.584\lib\Bottles.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Flexo">
+      <HintPath>..\packages\flexo.1.0.20.0\lib\Flexo.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore.1.3.0.278\lib\FubuCore.dll</HintPath>
@@ -48,6 +54,9 @@
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core.1.3.0.1710\lib\net40\FubuMVC.Core.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="FubuMVC.Core.View">
+      <HintPath>..\packages\FubuMVC.Core.View.1.1.0.581\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.2.1.0.183\lib\4.0\HtmlTags.dll</HintPath>
@@ -64,8 +73,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormatterConvention.cs" />
+    <Compile Include="JsonFormatter.cs" />
+    <Compile Include="XmlFormatter.cs" />
+    <Compile Include="BindingReader.cs" />
+    <Compile Include="DeserializationException.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FormatterBase.cs" />
+    <Compile Include="FriendlyDeserializationException.cs" />
+    <Compile Include="IFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Bender.cs" />
+    <Compile Include="FubuBender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
