@@ -13,7 +13,32 @@ Installation
 Usage
 ------------
 
+To use Bender with FubuMVC simply import it in your `FubuRegistry`:
 
+```csharp
+public class Conventions : FubuRegistry
+{
+    public Conventions()
+    {
+        ...
+        Import<FubuBender>();
+    }
+}
+```
+
+The DSL allows you to configure the data that is bound to the model after serialization. The default is route parameters only. 
+
+```csharp
+Import<FubuBender>(x => x
+    .Bindings(y => y.BindCookies().BindFiles()));
+```
+
+You can also configure Bender:
+
+```csharp
+Import<FubuBender>(x => x
+    .Configure(y => y.UseJsonCamelCaseNaming()));
+```
 
 License
 ------------
